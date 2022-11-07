@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-web-application
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: hello-web-app
+  template:
+    metadata:
+      labels:
+        name: hello-web-app
+    spec:
+      containers:
+      - name: application
+        image: forbsey/go-hello-web-application
+        imagepullpolicy: IfNotPreseh
+        ports:
+        - containerPort: 3000
